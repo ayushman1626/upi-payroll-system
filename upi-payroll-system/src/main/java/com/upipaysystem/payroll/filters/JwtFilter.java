@@ -28,11 +28,11 @@ public class JwtFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String authHeader = request.getHeader("Authentication");
+        String authHeader = request.getHeader("Authorization");
         String token = null;
         String email = null;
 
-        //Checking if the Authentication header has any values id so also checking if it starts with Bearer
+        //Checking if the Authorization header has any values id so also checking if it starts with Bearer
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             token = authHeader.substring(7);
             email = jwtUtil.extractEmail(token);

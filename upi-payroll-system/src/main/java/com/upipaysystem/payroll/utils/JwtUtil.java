@@ -1,5 +1,6 @@
-package com.upipaysystem.payroll.utils;
+ package com.upipaysystem.payroll.utils;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -7,6 +8,7 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
+import io.jsonwebtoken.security.SignatureException;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -30,8 +32,7 @@ public class JwtUtil {
                     .signWith(getkey(), Jwts.SIG.HS256)
                     .compact();
 
-        }catch (Exception e) {
-            e.printStackTrace();
+        }catch (io.jsonwebtoken.JwtException e) {
             return null;
         }
     }
@@ -53,7 +54,7 @@ public class JwtUtil {
                     .build()
                     .parseSignedClaims(token);
             return true;
-        } catch (ExpiredJwtException | MalformedJwtException | IllegalArgumentException e) {
+        } catch (ExpiredJwtException | MalformedJwtException | IllegalArgumentException | SignatureException e) {
             return false;
         }
     }
@@ -86,8 +87,12 @@ public class JwtUtil {
                     .build()
                     .parseSignedClaims(token)
                     .getPayload();
-        } catch (ExpiredJwtException | MalformedJwtException | IllegalArgumentException e) {
-            return null;
+        }catch(ExpiredJwtException e){
+             throw new RuntimeException("Token expired",e);
+        } catch (MalformedJwtException e){
+            throw new RuntimeException("invalid token",e);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Token is null, empty or only whitespace",e);
         }
     }
 

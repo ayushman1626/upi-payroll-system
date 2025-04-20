@@ -78,10 +78,8 @@ public class AuthService {
         String otp = otpGenerator.generateOTP();
         otpRepo.save(new Otp(otp,email,LocalDateTime.now().plusMinutes(5), Otp.Topic.REGISTRATION));
 
-        // Send OTP email
-        String subject = "Verify Your Email Address";
-        String body = String.format("Your OTP is: %s. Please use this to verify your email address.", otp);
-
+       
+        // Sending OTP email
         try {
 
             String htmlContent = getOTPEmailTemplate(otp);

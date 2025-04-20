@@ -1,21 +1,19 @@
 package com.upipaysystem.payroll.model;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+
 @Entity
 @Table(name = "pending_users")
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class PendingUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
+    private String email;;
     private String fullname;
     private String password;
 
