@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email Address - StreamPay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset styles */
+        body, h1, p, svg { margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Added Inter font */
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333333;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .header {
+            background-color: #f1f1f1;
+            padding: 20px; /* Adjusted padding */
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        /* Style for the SVG logo */
+        .header svg {
+             width: 150px; /* Set desired width */
+             height: auto; /* Maintain aspect ratio */
+             display: block; /* Needed for centering with margin auto */
+             margin: 0 auto; /* Center the logo */
+        }
+        .content {
+            padding: 30px;
+            text-align: left;
+        }
+        h1 {
+            color: #0056b3; /* Existing dark blue */
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600; /* Use Inter weight */
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555555;
+        }
+        .otp-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .otp-label {
+            font-size: 14px;
+            color: #777777;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .otp-code {
+            font-size: 28px;
+            letter-spacing: 8px;
+            color: #ffffff;
+            /* Changed background from green to blue */
+            background-color: #2563eb; /* Tailwind blue-600 */
+            padding: 12px 25px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold; /* Keep bold for emphasis */
+            /* Changed border from dark green to dark blue */
+            border: 1px solid #1d4ed8; /* Tailwind blue-700 */
+            font-family: 'Courier New', Courier, monospace; /* Monospace font for OTP */
+        }
+        .warning {
+            font-size: 14px;
+            color: #777777;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #888888;
+            padding: 20px 30px; /* Added horizontal padding */
+            border-top: 1px solid #e0e0e0;
+        }
+        .footer p {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #888888;
+            line-height: 1.4; /* Adjust line height for footer */
+        }
+        .disclaimer {
+            text-align: center;
+            font-size: 12px;
+            color: #aaaaaa;
+            padding: 15px 30px; /* Added padding */
+            background-color: #f9f9f9; /* Match body background */
+            border-top: 1px solid #e0e0e0; /* Separator line */
+
+        }
+         .disclaimer p {
+             font-size: 12px; /* Ensure disclaimer P tags match */
+             margin-bottom: 5px;
+             color: #aaaaaa;
+             line-height: 1.4;
+         }
+         .disclaimer a {
+             color: #888888; /* Link color for disclaimer */
+             text-decoration: none;
+         }
+         .disclaimer a:hover {
+             text-decoration: underline;
+         }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="StreamPay Logo">
+            <title>StreamPay Logo</title>
+            <defs>
+                <linearGradient id="streamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#3b82f6; stop-opacity:1" /> <stop offset="100%" style="stop-color:#2dd4bf; stop-opacity:1" /> </linearGradient>
+            </defs>
+            <path d="M 10 20 Q 20 10, 30 20 T 50 20" stroke="url(#streamGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M 15 30 Q 25 20, 35 30 T 55 30" stroke="url(#streamGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-opacity="0.7"/>
+            <path d="M 45 25 L 55 25 L 50 18 Z" fill="#2dd4bf" /> <path d="M 45 25 L 55 25 L 50 32 Z" fill="#3b82f6" /> <text x="70" y="35" font-family="Inter, sans-serif" font-size="24" font-weight="600" fill="#1f2937"> Stream<tspan font-weight="400" fill="#3b82f6">Pay</tspan> </text>
+        </svg>
+    </div>
+    <div class="content">
+        <h1>Verify Your Email Address</h1>
+
+        <p>Dear User,</p> <p>Thank you for registering with StreamPay. To complete your account setup and ensure the security of your account, please verify your email address using the One-Time Password (OTP) provided below.</p>
+
+        <div class="otp-container">
+            <span class="otp-label">Your Verification Code:</span>
+            <span class="otp-code">[[OTP]]</span>
+        </div>
+
+        <p>Please enter this code on the verification page within the next <strong>10 minutes</strong>. For your security, please do not share this code with anyone.</p>
+
+        <p class="warning">If you did not initiate this request, please disregard this email or contact our support team if you have concerns.</p>
+    </div>
+    <div class="footer">
+        <p>Regards,</p>
+        <p>The StreamPay Team</p> </div>
+    <div class="disclaimer">
+        <p>This is an automated message. Please do not reply directly to this email.</p>
+    </div>
+</div>
+</body>
+</html>
