@@ -135,7 +135,7 @@ public class AuthService {
             newUser.setCreatedAt(LocalDateTime.now());
             newUser.setActive(false);
             newUser.setRole(USER);
-            // Set role, company etc if needed
+            // Set role, company etc. if needed
             userRepository.save(newUser);
 
             // Clean up

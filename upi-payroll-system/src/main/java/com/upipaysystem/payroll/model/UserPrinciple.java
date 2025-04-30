@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public class UserPrinciple implements UserDetails {
 
@@ -27,5 +28,15 @@ public class UserPrinciple implements UserDetails {
     @Override
     public String getUsername() {
         return user.getEmail();
+    }
+
+    public Long getOrganizationId(){
+        return user.getOrganization().getId();
+    }
+
+    public Optional<Organization> getOrganization(){
+        Optional<Organization> optionalOrganization =
+                user.getOrganization() != null ? Optional.ofNullable(user.getOrganization()) : Optional.empty();
+        return optionalOrganization;
     }
 }

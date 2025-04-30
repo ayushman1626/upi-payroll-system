@@ -13,14 +13,33 @@ public class PendingUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;;
+    private String email;
+
     private String fullname;
+
     private String password;
 
     private LocalDateTime createdAt;
 
+    private Long organizationId;
+
+    private String verificationToken;
+
+    private LocalDateTime tokenExpiry;
+
+    @OneToOne(mappedBy = "pendingUser", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private PendingEmployeeDetails pendingEmployeeDetails;
+
     public enum Role {
         ADMIN, HR, EMPLOYEE
+    }
+
+    public Long getOrganizationId() {
+        return organizationId;
+    }
+
+    public void setOrganizationId(Long organizationId) {
+        this.organizationId = organizationId;
     }
 
     public Long getId() {
@@ -61,6 +80,22 @@ public class PendingUser {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
+    }
+
+    public LocalDateTime getTokenExpiry() {
+        return tokenExpiry;
+    }
+
+    public void setTokenExpiry(LocalDateTime tokenExpiry) {
+        this.tokenExpiry = tokenExpiry;
     }
 
     @Override

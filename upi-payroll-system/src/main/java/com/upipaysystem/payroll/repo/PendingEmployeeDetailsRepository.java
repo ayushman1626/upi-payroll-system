@@ -8,11 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface PendingUserRepository extends JpaRepository<PendingUser, Long>{
-    boolean existsByEmail(String email);
-
-    Optional<PendingUser> findByEmail(String email);
-
-    Optional<PendingUser> findByVerificationToken(String token);
-
+public interface PendingEmployeeDetailsRepository extends JpaRepository<PendingEmployeeDetails,Long> {
+    //PendingEmployeeDetails findByPendingUser(PendingUser pendingUser);
+    PendingEmployeeDetails findByPendingUser_VerificationToken(String token);
 }

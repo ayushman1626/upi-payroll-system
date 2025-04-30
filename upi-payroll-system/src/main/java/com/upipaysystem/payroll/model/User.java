@@ -7,9 +7,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class User {
 
@@ -36,11 +33,18 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private EmployeeDetails employeeDetails;
+
     @Column(nullable = false)
     private boolean active = true;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+
+    public User() {
+    }
 
     public Long getId() {
         return id;
@@ -114,6 +118,14 @@ public class User {
         this.createdAt = createdAt;
     }
 
+    public EmployeeDetails getEmployeeDetails() {
+        return employeeDetails;
+    }
+
+    public void setEmployeeDetails(EmployeeDetails employeeDetails) {
+        this.employeeDetails = employeeDetails;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -129,8 +141,12 @@ public class User {
                 '}';
     }
 
+
+
     public enum Role {
         ADMIN, HR, EMPLOYEE, USER
     }
+
+
 }
 
