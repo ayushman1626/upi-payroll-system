@@ -1,9 +1,8 @@
 package com.upipaysystem.payroll.service;
 
 import com.upipaysystem.payroll.dtos.auth.RegistrationResponse;
-import com.upipaysystem.payroll.dtos.employee.EmployeeDTO;
-import com.upipaysystem.payroll.dtos.employee.EmployeeDetailsDTO;
-import com.upipaysystem.payroll.dtos.employee.EmployeeRegisterRequest;
+import com.upipaysystem.payroll.dtos.employee.*;
+import com.upipaysystem.payroll.exceptions.RazorpayServiceException;
 import com.upipaysystem.payroll.exceptions.UserAlreadyExistsException;
 import com.upipaysystem.payroll.exceptions.VerificationTokenExpiredException;
 import com.upipaysystem.payroll.model.*;
@@ -38,6 +37,7 @@ public class EmployeeService {
     private final BCryptPasswordEncoder encoder;
     private final EmployeeDetailsRepository employeeDetailsRepository;
     private final PendingEmployeeDetailsRepository pendingEmployeeDetailsRepository;
+   // private final RazorpayService razorpayService;
 
     public EmployeeService(UserRepository userRepository,
                            PendingUserRepository pendingUserRepository,
@@ -45,6 +45,7 @@ public class EmployeeService {
                            OrganizationRepository organizationRepository,
                            PendingEmployeeDetailsRepository pendingEmployeeDetailsRepository,
                            EmployeeDetailsRepository employeeDetailsRepository
+                          // RazorpayService razorpayService
 
     ) {
         this.userRepository = userRepository;
@@ -54,6 +55,7 @@ public class EmployeeService {
         this.organizationRepository = organizationRepository;
         this.pendingEmployeeDetailsRepository = pendingEmployeeDetailsRepository;
         this.employeeDetailsRepository = employeeDetailsRepository;
+     //   this.razorpayService = razorpayService;
     }
 
 
@@ -100,7 +102,6 @@ public class EmployeeService {
         pendingEmployeeDetails.setGender(request.getGender());
         pendingEmployeeDetails.setSalary(request.getSalary());
         pendingEmployeeDetails.setJoiningDate(request.getJoiningDate());
-        pendingEmployeeDetails.setUpiId(request.getUpiId());
         pendingEmployeeDetails.setPendingUser(pendingUser);
         pendingEmployeeDetails.setCreatedAt(LocalDateTime.now());
         pendingEmployeeDetailsRepository.save(pendingEmployeeDetails);
@@ -170,7 +171,6 @@ public class EmployeeService {
         employeeDetails.setDesignation(pendingEmployeeDetails.getDesignation());
         employeeDetails.setJoiningDate(pendingEmployeeDetails.getJoiningDate());
         employeeDetails.setGender(pendingEmployeeDetails.getGender());
-        employeeDetails.setUpiId(pendingEmployeeDetails.getUpiId());
 
         employeeDetailsRepository.save(employeeDetails);
 
@@ -239,4 +239,13 @@ Suggestions for Potential Enhancements:
 
         return employeeDetailsDTOs;
     }
+
+//    @Transactional
+//    public EmployeePaymentAccountDto setPaymentAccount(
+//            UserPrinciple userPrinciple, EmployeeAccountRequest request) {
+//      User user = userRepository.findByEmail(userPrinciple.getUsername()).orElseThrow(
+//                () -> new UserAlreadyExistsException("User not found"));
+//      String contactId = razorpayService.createContact(user.getEmail(),user.getFullName(),user.getId().toString());
+//
+//    }
 }

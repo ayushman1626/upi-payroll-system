@@ -31,8 +31,6 @@ public class PendingEmployeeDetails {
 
     private LocalDate joiningDate;
 
-    private String upiId;
-
     private LocalDateTime createdAt;
 
 
@@ -99,14 +97,6 @@ public class PendingEmployeeDetails {
 
     public void setJoiningDate(LocalDate joiningDate) {
         this.joiningDate = joiningDate;
-    }
-
-    public String getUpiId() {
-        return upiId;
-    }
-
-    public void setUpiId(String upiId) {
-        this.upiId = upiId;
     }
 
     @Override

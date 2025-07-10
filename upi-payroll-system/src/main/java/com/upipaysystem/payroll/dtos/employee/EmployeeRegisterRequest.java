@@ -39,8 +39,6 @@ public class EmployeeRegisterRequest {
     @NotNull
     private LocalDate joiningDate;
 
-    @NotBlank(message = "UPI Id is required")
-    private String upiId;
     // Getters and Setters
 
 
@@ -115,15 +113,6 @@ public class EmployeeRegisterRequest {
     public void setJoiningDate(@NotNull LocalDate joiningDate) {
         this.joiningDate = joiningDate;
     }
-
-    public @NotBlank(message = "UPI Id is required") String getUpiId() {
-        return upiId;
-    }
-
-    public void setUpiId(@NotBlank(message = "UPI Id is required") String upiId) {
-        this.upiId = upiId;
-    }
-
 
 }
 

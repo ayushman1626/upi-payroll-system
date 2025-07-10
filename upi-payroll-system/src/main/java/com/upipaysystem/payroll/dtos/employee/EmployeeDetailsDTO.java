@@ -20,7 +20,6 @@ public class EmployeeDetailsDTO {
     private String designation;
     private Double salary;
     private String department;
-    private String upiId;
     private LocalDate joiningDate;
     private User.Role role;
     private boolean active;
@@ -37,7 +36,6 @@ public class EmployeeDetailsDTO {
         this.designation = employeeDetails.getDesignation();
         this.joiningDate = employeeDetails.getJoiningDate();
         this.salary = employeeDetails.getSalary();
-        this.upiId = employeeDetails.getUpiId();
         this.active = user.isActive();
         this.organization = new OrganizationSummaryDTO(user.getOrganization());
         this.createdAt = user.getCreatedAt();
@@ -113,14 +111,6 @@ public class EmployeeDetailsDTO {
 
     public void setDepartment(String department) {
         this.department = department;
-    }
-
-    public String getUpiId() {
-        return upiId;
-    }
-
-    public void setUpiId(String upiId) {
-        this.upiId = upiId;
     }
 
     public LocalDate getJoiningDate() {

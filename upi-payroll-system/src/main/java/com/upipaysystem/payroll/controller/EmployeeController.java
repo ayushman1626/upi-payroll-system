@@ -3,9 +3,8 @@ package com.upipaysystem.payroll.controller;
 
 import com.upipaysystem.payroll.dtos.auth.RegistrationResponse;
 import com.upipaysystem.payroll.dtos.common.ApiResponse;
-import com.upipaysystem.payroll.dtos.employee.EmployeeDTO;
-import com.upipaysystem.payroll.dtos.employee.EmployeeDetailsDTO;
-import com.upipaysystem.payroll.dtos.employee.EmployeeRegisterRequest;
+import com.upipaysystem.payroll.dtos.employee.*;
+import com.upipaysystem.payroll.model.EmployeePaymentAccount;
 import com.upipaysystem.payroll.model.UserPrinciple;
 import com.upipaysystem.payroll.service.EmployeeService;
 
@@ -24,6 +23,7 @@ import java.util.Optional;
 @RequestMapping("api/employee")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class EmployeeController {
+
     EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService){
@@ -67,6 +67,19 @@ public class EmployeeController {
         );
     }
 
+//    @PostMapping("/account-details")
+//    @PreAuthorize("hasAuthority('EMPLOYEE')")
+//    public ResponseEntity<ApiResponse<EmployeePaymentAccountDto>> addAccountDetails(
+//            @AuthenticationPrincipal UserPrinciple userPrinciple,
+//            @Valid @RequestBody EmployeeAccountRequest request
+//    ){
+//        if (userPrinciple == null) {
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+//                    .body(new ApiResponse<>(false, "User not authenticated.", null));
+//        }
+//        EmployeePaymentAccountDto employeePaymentAccountDto =
+//                employeeService.setPaymentAccount(userPrinciple,request);
+//    }
 
 }
 

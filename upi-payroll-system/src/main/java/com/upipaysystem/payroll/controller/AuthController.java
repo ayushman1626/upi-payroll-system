@@ -74,10 +74,8 @@ public class AuthController {
         LoginResponse response;
         response = authService.loginUser(request);
 
-        Map<String, Object> responseData = new HashMap<>();
-        responseData = response.getData();
         return ResponseEntity.status(HttpStatus.OK).body(
-                new ApiResponse<>(true, response.getMessage(), responseData));
+                new ApiResponse<>(true, response.getMessage(), response.getData()));
     }
 
 

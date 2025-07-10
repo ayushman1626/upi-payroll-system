@@ -21,22 +21,11 @@ public class EmployeeDetails {
 
     private String department;
 
-    @Column(unique = true)
-    private String upiId;
-
     private LocalDate joiningDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    public String getUpiId() {
-        return upiId;
-    }
-
-    public void setUpiId(String upiId) {
-        this.upiId = upiId;
-    }
 
     public Gender  getGender() {
         return gender;
